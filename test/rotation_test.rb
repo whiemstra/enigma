@@ -2,7 +2,7 @@ gem 'minitest'        #'~> 5.2'
 require 'minitest/autorun'
 require_relative '../lib/key_set'
 require_relative '../lib/date_key'
-require_relative '../lib/offsets'
+require_relative '../lib/rotation'
 
 class RotationTest < MiniTest::Test
 
