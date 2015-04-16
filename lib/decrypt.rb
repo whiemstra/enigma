@@ -66,3 +66,10 @@ class Decrypt
   end
 
 end
+
+if __FILE__ == $0
+  # this will only run if the script was the main, not load'd or require'd
+  decrypt = Decrypt.new(ARGV[0], ARGV[1], ARGV[2], ARGV[3])
+  decrypt.write_decrypted_message
+  puts "Created '#{decrypt.output_filename}' with the key #{decrypt.keyset} and date #{decrypt.date}"
+end
