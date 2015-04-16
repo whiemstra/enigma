@@ -22,28 +22,21 @@ class CrackTest < MiniTest::Test
     assert_equal '12345', obj.crack
   end
 
-  def test_it_cracks_one_word_messages
+  def test_it_cracks_messages_with_only_known_message
     skip
+    obj = Crack.new('encrypted_end_only.txt', 'output.txt', '160415')
+    assert_equal '..end..', obj.decrypted_message
+  end
+
+  def test_it_cracks_more_than_one_word_messages
     obj = Crack.new('encrypted_abc_with_end.txt', 'cracked_abc.txt', '140213')
     assert_equal '12345', obj.crack
   end
 
-  def test_it_cracks_more_than_one_word_messages
-    skip
-    obj = Crack.new('encrypted_abc.txt', 'cracked_abc.txt', '140213')
-    assert_equal '12345', obj.crack
-  end
-
-  def test_it_cracks_messages_on_multiple_lines
-    skip
-    obj = Crack.new('encrypted_abc.txt', 'cracked_abc.txt', '140213')
-    assert_equal '12345', obj.crack
-  end
-
-  def test_has_cracked_message
-    obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', '12345', '140213')
-    obj.date = Time.new(2013, 02, 14)
-    assert_equal 'hello', obj.decrypted_message
-  end
+  # def test_has_cracked_message
+  #   obj = Decrypt.new('encrypted_abc_with_end.txt', 'decrypted_abc.txt', '12345', '140213')
+  #   obj.date = Time.new(2013, 02, 14)
+  #   assert_equal 'hello world ..end..', obj.decrypted_message
+  # end
 end
 
