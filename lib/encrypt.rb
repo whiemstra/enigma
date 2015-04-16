@@ -39,7 +39,7 @@ class Encrypt
     #   keyset_array = keyset.chars.each_cons(2).map(&:join).map(&:to_i) # keyset
     # Phase Two (Encrypt said "hey give me that array for keyset 12345")
     keyset_array = KeySet.new(keyset).offsets
-    date_array = [21, 14, 41, 13] # TODO make this real
+    date_array = [5, 3, 6, 9] # TODO make this real
 
     rotation = []
     keyset_array.each_with_index do |num, index|
@@ -51,11 +51,11 @@ class Encrypt
   end
 
   def date
-    @date # [21, 14, 41, 15]
+    @date
   end
 
   def date=(time) # obj.date = 'foo'
-    @date = time.strftime('%m%d%y')
+    @date = time.strftime('%d%m%y')
   end
 
   def keyset

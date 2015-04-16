@@ -19,15 +19,15 @@ class EncryptTest < MiniTest::Test
 
   def test_has_encrypted_message
     obj = Encrypt.new('abc.txt', 'output.txt')
-    # obj.date = Time.new(2013, 02, 14)
+    obj.date = Time.new(2013, 02, 14)
     obj.keyset = 12345
-    assert_equal 'bci4i', obj.encrypted_message
+    assert_equal 'y4m05', obj.encrypted_message
   end
 
   def test_has_date
     obj = Encrypt.new('abc', '123')
     obj.date = Time.new(2014, 04, 16)
-    assert_equal '041614', obj.date
+    assert_equal '160414', obj.date
   end
 
   def test_has_keyset
@@ -40,7 +40,7 @@ class EncryptTest < MiniTest::Test
     obj = Encrypt.new('abc', '123')
     obj.date = Time.new(2013, 02, 14)
     obj.keyset = 12345
-    assert_equal [33,37,75,58], obj.rotation
+    assert_equal [17, 26, 40, 54], obj.rotation
   end
 
 end

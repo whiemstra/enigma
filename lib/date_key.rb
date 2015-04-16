@@ -22,6 +22,3 @@ class DateKey
   end
 end
 
-# date = DateKey.new(041415)
-# puts date.squared
-# print date.offsets
