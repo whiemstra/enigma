@@ -13,7 +13,7 @@ class EncryptTest < MiniTest::Test
   end
 
   def test_has_original_message
-    obj = Encrypt.new('abc.txt', 'output.txt') # abc.txt - Hello World
+    obj = Encrypt.new('abc.txt', 'output.txt')
     assert_equal 'hello', obj.original_message
   end
 

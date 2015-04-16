@@ -29,8 +29,8 @@ class Decrypt
     message_array.each_slice(4) do |letters|
       letters.each_with_index do |letter, index|
         # index of the letter + rotations[index] equals a value in some future character map
-        encrypted_num = character_map.index(letter.downcase) + rotation[index]
-        decrypted <<  character_map[encrypted_num % character_map.length]
+        encrypted_num = character_map.reverse.index(letter.downcase) + rotation[index]
+        decrypted <<  character_map.reverse[encrypted_num % character_map.length]
       end
     end
     decrypted.join('')
