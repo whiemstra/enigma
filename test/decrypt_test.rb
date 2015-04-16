@@ -9,8 +9,8 @@ class DecryptTest < MiniTest::Test
 
     assert_equal obj.encrypted_filename, 'abc'
     assert_equal obj.output_filename, '123'
-    assert_equal obj.key_set, '000'
-    assert_equal obj.date_key, '999'
+    assert_equal obj.keyset, '000'
+    assert_equal obj.date, '999'
   end
 
   def test_has_encrypted_message_to_decrypt
@@ -31,16 +31,13 @@ class DecryptTest < MiniTest::Test
   end
 
   def test_rotation
-    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', 'abc', '123')
-    obj.date = Time.new(2013, 02, 14)
-    obj.keyset = 12345
+    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', '12345', '140213')
     assert_equal [17, 26, 40, 54], obj.rotation
   end
 
   def test_has_decrypted_message
-    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', 'abc', '123')
-    obj.date = Time.new(2013, 02, 14)
-    obj.keyset = 12345
+    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', '12345', '140213')
+    #obj.date = Time.new(2013, 02, 14)
     assert_equal 'hello', obj.decrypted_message
   end
 end

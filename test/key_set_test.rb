@@ -31,7 +31,6 @@ class KeySetTest < MiniTest::Test
     assert_equal [41, 15, 52, 21], KeySet.new("41521").offsets
   end
 
-
   def test_offsets_array_is_four
     key = KeySet.new
     key.generate

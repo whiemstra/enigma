@@ -2,13 +2,13 @@ require_relative '../lib/key_set'
 
 class Decrypt
 
-  attr_accessor :encrypted_filename, :output_filename, :key_set, :date_key
+  attr_accessor :encrypted_filename, :output_filename
 
   def initialize(encrypted_filename, output_filename, key_set, date_key)
     self.encrypted_filename = encrypted_filename
     self.output_filename = output_filename
-    self.key_set = key_set
-    self.date_key = date_key
+    self.keyset = key_set
+    self.date = date_key
   end
 
   def encrypted_message
@@ -18,19 +18,18 @@ class Decrypt
   def character_map
     [*('a'..'z'), *('0'..'9'), ' ', '.', ',']
   end
-  #
-  # def write_decrypted_message
-  #   File.open(output_filename, 'w') {|file| file.write(decrypted_message) }
-  # end
-  #
+
+  def write_decrypted_message
+    File.open(output_filename, 'w') {|file| file.write(decrypted_message) }
+  end
+
   def decrypted_message
     message_array = encrypted_message.split(//)
     decrypted = []
     message_array.each_slice(4) do |letters|
       letters.each_with_index do |letter, index|
-        # index of the letter + rotations[index] equals a value in some future character map
         encrypted_num = character_map.reverse.index(letter.downcase) + rotation[index]
-        decrypted <<  character_map.reverse[encrypted_num % character_map.length]
+        decrypted << character_map.reverse[encrypted_num % character_map.length]
       end
     end
     decrypted.join('')
@@ -51,7 +50,11 @@ class Decrypt
   end
 
   def date=(time)
-    @date = time.strftime('%d%m%y')
+    @date = if time.is_a?(Time)
+              time.strftime('%d%m%y')
+            else
+              time
+            end
   end
 
   def keyset

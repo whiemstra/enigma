@@ -7,6 +7,7 @@ class Encrypt
   def initialize(input_filename, output_filename)
     self.input_filename = input_filename
     self.output_filename = output_filename
+    self.date = Time.new
   end
 
   def original_message
@@ -57,8 +58,14 @@ class Encrypt
     @keyset
   end
 
-
   def keyset=(numbers)
     @keyset = numbers.to_s
   end
+end
+
+if __FILE__ == $0
+  # this will only run if the script was the main, not load'd or require'd
+  encrypt = Encrypt.new(ARGV[0], ARGV[1])
+  encrypt.write_encrypted_message
+  puts "Created '#{encrypt.output_filename}' with the key #{encrypt.keyset} and date #{encrypt.date}"
 end

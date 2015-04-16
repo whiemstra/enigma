@@ -1,8 +1,12 @@
 class KeySet
   attr_accessor :keystring
 
-  def initialize(keystring=generate)
-    self.keystring = keystring.to_s
+  def initialize(keystring)
+    if keystring == nil
+      self.keystring = generate
+    else
+      self.keystring = keystring.to_s
+    end
   end
 
   def generate
