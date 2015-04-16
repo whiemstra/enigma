@@ -35,39 +35,30 @@ class Encrypt
   end
 
   def rotation
-    # Phase One (Encrypt handled it himself)
-    #   keyset_array = keyset.chars.each_cons(2).map(&:join).map(&:to_i) # keyset
-    # Phase Two (Encrypt said "hey give me that array for keyset 12345")
     keyset_array = KeySet.new(keyset).offsets
-    date_array = [5, 3, 6, 9] # TODO make this real
-
+    date_array = DateKey.new(date).offsets
     rotation = []
     keyset_array.each_with_index do |num, index|
       rotation << (num + date_array[index])
     end
 
     rotation
-  #  date + keyset
   end
 
   def date
     @date
   end
 
-  def date=(time) # obj.date = 'foo'
+  def date=(time)
     @date = time.strftime('%d%m%y')
   end
 
   def keyset
-    @keyset # [10, 02, 22, 21]
+    @keyset
   end
+
 
   def keyset=(numbers)
     @keyset = numbers.to_s
   end
-
 end
-
-# encrypt = Encrypt.new(ARGV[0], ARGV[1])
-# encrypt.keyset = 12345 # TODO this should be generated
-# encrypt.write_encrypted_message

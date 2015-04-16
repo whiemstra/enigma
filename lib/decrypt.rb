@@ -2,12 +2,12 @@ require_relative '../lib/key_set'
 
 class Decrypt
 
-  attr_accessor :encrypted_filename, :output_filename, :number_key, :date_key
+  attr_accessor :encrypted_filename, :output_filename, :key_set, :date_key
 
-  def initialize(encrypted_filename, output_filename, number_key, date_key)
+  def initialize(encrypted_filename, output_filename, key_set, date_key)
     self.encrypted_filename = encrypted_filename
     self.output_filename = output_filename
-    self.number_key = number_key
+    self.key_set = key_set
     self.date_key = date_key
   end
 
@@ -38,31 +38,24 @@ class Decrypt
 
   def rotation
     keyset_array = KeySet.new(keyset).offsets
-    date_array = [21, 14, 41, 13] # TODO make this real
-
+    date_array = DateKey.new(date).offsets
     rotation = []
     keyset_array.each_with_index do |num, index|
-      rotation << (num - date_array[index])
+      rotation << (num + date_array[index])
     end
-
-    # rotation.map! do |num|
-    #   num.abs
-    # end
-
     rotation
-    #  date - keyset
   end
 
   def date
-    @date # [21, 14, 41, 13]
+    @date
   end
 
-  def date=(time) # obj.date = 'foo'
-    @date = time.strftime('%m%d%y')
+  def date=(time)
+    @date = time.strftime('%d%m%y')
   end
 
   def keyset
-    @keyset # [10, 02, 22, 21]
+    @keyset
   end
 
   def keyset=(numbers)
@@ -70,5 +63,3 @@ class Decrypt
   end
 
 end
-
-# Decrypt.new(ARGV[0], ARGV[1], ARGV[2], ARGV[3])
