@@ -32,7 +32,10 @@ end
 if __FILE__ == $0
   # this will only run if the script was the main, not load'd or require'd
   crack = Crack.new(ARGV[0], ARGV[1], ARGV[2])
-  crack.crack
-  puts "Created '#{crack.output_filename}' with the cracked key #{crack.cracked_key} and date #{crack.date}"
+  if crack.crack != nil
+    puts "Created '#{crack.output_filename}' with the cracked key #{crack.cracked_key} and date #{crack.date}"
+  else
+    puts "Could not crack."
+  end
 end
 
