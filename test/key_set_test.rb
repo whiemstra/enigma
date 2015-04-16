@@ -34,7 +34,7 @@ class KeySetTest < MiniTest::Test
   def test_offsets_array_is_four
     key = KeySet.new
     key.generate
-    assert_equal 4, key.offsets.length
+    assert_equal 4, key.offsets.count
   end
 
   # def test_first_two_digits_of_generated_key_are_the_A_rotation ???????????????????????????????

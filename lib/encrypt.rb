@@ -37,9 +37,7 @@ class Encrypt
   end
 
   def rotation
-    # keyset is the cause of all issues.
     keyset_array = KeySet.new(keyset).offsets
-    #require 'pry'; binding.pry
     date_array = DateKey.new(date).offsets
     rotation = []
     keyset_array.each_with_index do |num, index|

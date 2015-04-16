@@ -1,7 +1,6 @@
 require_relative './date_key'
 require_relative './decrypt'
 
-
 class Crack
   attr_accessor :encrypted_filename, :output_filename, :date
 
@@ -13,15 +12,19 @@ class Crack
   end
 
   def crack
-    00000.upto(99999) do |key|
+    "00000".upto("99999") do |key|
       decrypt = Decrypt.new(encrypted_filename, output_filename, key, date)
       if decrypt.decrypted_message[-7..-1] == @known_message
         @cracked_key = key.to_s
-        decrypt.write_decrypted_message
+        decrypt.write_cracked_message
         break
       end
     end
     @cracked_key
+  end
+
+  def write_cracked_message
+    File.open(output_filename, 'w') {|file| file.write(crack) }
   end
 end
 

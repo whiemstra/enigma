@@ -1,5 +1,6 @@
 gem 'minitest'
 require 'minitest/autorun'
+require 'minitest/pride'
 require_relative '../lib/decrypt'
 
 class DecryptTest < MiniTest::Test
@@ -26,8 +27,8 @@ class DecryptTest < MiniTest::Test
 
   def test_has_keyset
     obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', 'abc', '123')
-    obj.keyset = 10221
-    assert_equal '10221', obj.keyset
+    obj.keyset = 12345
+    assert_equal '12345', obj.keyset
   end
 
   def test_rotation
@@ -37,7 +38,7 @@ class DecryptTest < MiniTest::Test
 
   def test_has_decrypted_message
     obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', '12345', '140213')
-    #obj.date = Time.new(2013, 02, 14)
+    obj.date = Time.new(2013, 02, 14)
     assert_equal 'hello', obj.decrypted_message
   end
 end

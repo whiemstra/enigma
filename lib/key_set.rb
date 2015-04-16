@@ -1,19 +1,22 @@
 class KeySet
   attr_accessor :keystring
 
-  def initialize(keystring=generate)
+  def initialize(keystring)
     if keystring == nil
-      self.keystring = generate
+      @keystring = generate
     else
-      self.keystring = keystring.to_s
+      @keystring = keystring.to_s
     end
   end
 
   def generate
-    self.keystring = rand(00000..99999).to_s
+    keystring = (0...5).map { rand(9) }.join
   end
 
   def offsets
     keystring.chars.each_cons(2).map(&:join).map(&:to_i)
   end
 end
+
+key = KeySet.new('74937')
+puts key
