@@ -10,7 +10,7 @@ class KeySet
   end
 
   def generate
-    self.keystring = rand(10000..99999).to_s
+    self.keystring = rand(00000..99999).to_s
   end
 
   def offsets

@@ -1,4 +1,5 @@
 require_relative '../lib/key_set'
+require_relative '../lib/date_key'
 
 class Decrypt
 

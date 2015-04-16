@@ -13,7 +13,7 @@ class CrackTest < MiniTest::Test
   end
 
   def test_crack_returns_key
-    obj = Crack.new('cracked_abc2.txt', 'uncracked_abc.txt', '140213')
+    obj = Crack.new('encrypted_abc.txt', 'cracked_abc.txt', '140213')
     assert_equal '12345', obj.crack
   end
 

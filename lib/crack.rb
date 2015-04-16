@@ -13,7 +13,7 @@ class Crack
   end
 
   def crack
-    10000.upto(99999) do |key|
+    00000.upto(99999) do |key|
       decrypt = Decrypt.new(encrypted_filename, output_filename, key, date)
       if decrypt.decrypted_message[-7..-1] == @known_message
         @cracked_key = key.to_s

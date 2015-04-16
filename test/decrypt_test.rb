@@ -19,24 +19,24 @@ class DecryptTest < MiniTest::Test
   end
 
   def test_has_date
-    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', 'abc', '123')
+    obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', 'abc', '123')
     obj.date = Time.new(2014, 04, 16)
     assert_equal '160414', obj.date
   end
 
   def test_has_keyset
-    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', 'abc', '123')
+    obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', 'abc', '123')
     obj.keyset = 10221
     assert_equal '10221', obj.keyset
   end
 
   def test_rotation
-    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', '12345', '140213')
+    obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', '12345', '140213')
     assert_equal [17, 26, 40, 54], obj.rotation
   end
 
   def test_has_decrypted_message
-    obj = Decrypt.new('encrypted_abc.txt', 'output.txt', '12345', '140213')
+    obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', '12345', '140213')
     #obj.date = Time.new(2013, 02, 14)
     assert_equal 'hello', obj.decrypted_message
   end

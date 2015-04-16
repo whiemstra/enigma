@@ -27,15 +27,19 @@ class Encrypt
     encrypted = []
     message_array.each_slice(4) do |letters|
       letters.each_with_index do |letter, index|
-        encrypted_num = character_map.index(letter.downcase) + rotation[index]
-        encrypted <<  character_map[encrypted_num % character_map.length]
+        if character_map.index(letter.downcase)
+          encrypted_num = character_map.index(letter.downcase) + rotation[index]
+          encrypted <<  character_map[encrypted_num % character_map.length]
+        end
       end
     end
     encrypted.join('')
   end
 
   def rotation
+    # keyset is the cause of all issues.
     keyset_array = KeySet.new(keyset).offsets
+    #require 'pry'; binding.pry
     date_array = DateKey.new(date).offsets
     rotation = []
     keyset_array.each_with_index do |num, index|
