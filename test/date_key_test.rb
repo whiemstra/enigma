@@ -1,4 +1,4 @@
-gem 'minitest'        #'~> 5.2'
+gem 'minitest'
 require 'minitest/autorun'
 require_relative '../lib/date_key'
 
