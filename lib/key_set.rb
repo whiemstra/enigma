@@ -1,12 +1,14 @@
 class KeySet
   attr_accessor :keystring
 
-  def initialize(keystring=generate)
-    if keystring == nil
-      @keystring = generate
-    else
-      @keystring = keystring.to_s
-    end
+  def initialize(keystring = generate)
+    @keystring = keystring
+
+    # if keystring == nil
+    #   @keystring = generate
+    # else
+    #   @keystring = keystring.to_s
+    # end
   end
 
   def generate
