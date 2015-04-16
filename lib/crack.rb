@@ -23,12 +23,16 @@ class Crack
     @cracked_key
   end
 
+  def cracked_key
+    @cracked_key
+  end
+
 end
 
 if __FILE__ == $0
   # this will only run if the script was the main, not load'd or require'd
   crack = Crack.new(ARGV[0], ARGV[1], ARGV[2])
-  crack.write_cracked_message
-  puts "Created '#{crack.output_filename}' with the cracked key #{@cracked_key} and date #{crack.date}"
+  crack.crack
+  puts "Created '#{crack.output_filename}' with the cracked key #{crack.cracked_key} and date #{crack.date}"
 end
 
