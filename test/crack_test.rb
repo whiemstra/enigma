@@ -25,7 +25,7 @@ class CrackTest < MiniTest::Test
   def test_it_cracks_messages_with_only_known_message
     skip
     obj = Crack.new('encrypted_end_only.txt', 'output.txt', '160415')
-    assert_equal '..end..', obj.decrypted_message
+    assert_equal '..end..', obj.crack
   end
 
   def test_it_cracks_more_than_one_word_messages

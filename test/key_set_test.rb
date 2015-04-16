@@ -43,15 +43,22 @@ class KeySetTest < MiniTest::Test
     assert_equal 24, offsets_array[0]
   end
 
-  # def test_second_and_third_digits_of_generated_key_are_the_B_rotation
-  #
-  # end
-  #
-  # def test_third_and_fourth_digits_of_generated_key_are_the_C_rotation
-  #
-  # end
-  #
-  # def test_fourth_and_fifth_digits_of_generated_key_are_the_D_rotation
-  #
-  # end
+  def test_first_two_digits_of_generated_key_are_the_B_rotation
+    key = KeySet.new("24680")
+    offsets_array = key.offsets
+    assert_equal 46, offsets_array[1]
+  end
+
+  def test_first_two_digits_of_generated_key_are_the_C_rotation
+    key = KeySet.new("24680")
+    offsets_array = key.offsets
+    assert_equal 68, offsets_array[2]
+  end
+
+  def test_first_two_digits_of_generated_key_are_the_D_rotation
+    key = KeySet.new("24680")
+    offsets_array = key.offsets
+    assert_equal 80, offsets_array[3]
+  end
+
 end
