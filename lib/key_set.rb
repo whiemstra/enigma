@@ -8,15 +8,10 @@ class KeySet
       self.keystring = keystring
     end
 
-    # if keystring == nil
-    #   @keystring = generate
-    # else
-    #   @keystring = keystring.to_s
-    # end
   end
 
   def generate
-    rand(10000..99999).to_s#(0...5).map { rand(9) }.join
+    rand(10000..99999).to_s
   end
 
   def offsets

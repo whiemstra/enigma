@@ -33,10 +33,5 @@ class CrackTest < MiniTest::Test
     assert_equal '12345', obj.crack
   end
 
-  # def test_has_cracked_message
-  #   obj = Decrypt.new('encrypted_abc_with_end.txt', 'decrypted_abc.txt', '12345', '140213')
-  #   obj.date = Time.new(2013, 02, 14)
-  #   assert_equal 'hello world ..end..', obj.decrypted_message
-  # end
 end
 
