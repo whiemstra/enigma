@@ -18,13 +18,13 @@ class CrackTest < MiniTest::Test
   end
 
   def test_crack_returns_key
-    obj = Crack.new('encrypted_abc.txt', 'cracked_abc.txt', '140213')
+    obj = Crack.new('encrypted_abc_with_end.txt', 'cracked_abc.txt', '140213')
     assert_equal '12345', obj.crack
   end
 
   def test_it_cracks_one_word_messages
     skip
-    obj = Crack.new('encrypted_abc.txt', 'cracked_abc.txt', '140213')
+    obj = Crack.new('encrypted_abc_with_end.txt', 'cracked_abc.txt', '140213')
     assert_equal '12345', obj.crack
   end
 

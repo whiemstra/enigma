@@ -10,7 +10,7 @@ class KeySetTest < MiniTest::Test
 
   def test_it_takes_a_given_key
     key = KeySet.new("24680")
-    assert_equal "24680", key
+    assert_equal "24680", key.keystring
   end
 
   def test_it_generates_a_new_random_key_if_one_is_not_provided
@@ -40,7 +40,7 @@ class KeySetTest < MiniTest::Test
   def test_first_two_digits_of_generated_key_are_the_A_rotation
     key = KeySet.new("24680")
     offsets_array = key.offsets
-    assert_equal 24, offsets_array.index[0]
+    assert_equal 24, offsets_array[0]
   end
 
   # def test_second_and_third_digits_of_generated_key_are_the_B_rotation

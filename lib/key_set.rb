@@ -2,7 +2,7 @@ class KeySet
   attr_accessor :keystring
 
   def initialize(keystring = generate)
-    @keystring = keystring
+    self.keystring = keystring
 
     # if keystring == nil
     #   @keystring = generate
@@ -12,11 +12,11 @@ class KeySet
   end
 
   def generate
-    @keystring = (0...5).map { rand(9) }.join
+    self.keystring = rand(10000..99999).to_s#(0...5).map { rand(9) }.join
   end
 
   def offsets
-    @keystring.chars.each_cons(2).map(&:join).map(&:to_i)
+    keystring.chars.each_cons(2).map(&:join).map(&:to_i)
   end
 end
 
