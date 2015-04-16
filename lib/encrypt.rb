@@ -37,7 +37,7 @@ class Encrypt
   end
 
   def rotation
-    keyset_array = KeySet.new(keyset).offsets
+    keyset_array = keyset_object.offsets
     date_array = DateKey.new(date).offsets
     rotation = []
     keyset_array.each_with_index do |num, index|
@@ -45,6 +45,10 @@ class Encrypt
     end
 
     rotation
+  end
+
+  def keyset_object
+    KeySet.new(keyset)
   end
 
   def date
@@ -68,5 +72,5 @@ if __FILE__ == $0
   # this will only run if the script was the main, not load'd or require'd
   encrypt = Encrypt.new(ARGV[0], ARGV[1])
   encrypt.write_encrypted_message
-  puts "Created '#{encrypt.output_filename}' with the key #{encrypt.keyset} and date #{encrypt.date}"
+  puts "Created '#{encrypt.output_filename}' with the key #{encrypt.keyset_object.keystring} and date #{encrypt.date}"
 end
