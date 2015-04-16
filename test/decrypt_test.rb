@@ -38,7 +38,6 @@ class DecryptTest < MiniTest::Test
 
   def test_has_decrypted_message
     obj = Decrypt.new('encrypted_abc.txt', 'decrypted_abc.txt', '12345', '140213')
-    obj.date = Time.new(2013, 02, 14)
     assert_equal 'hello', obj.decrypted_message
   end
 end
