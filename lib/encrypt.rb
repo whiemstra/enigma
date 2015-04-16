@@ -48,7 +48,7 @@ class Encrypt
   end
 
   def keyset_object
-    KeySet.new(keyset)
+    @keyset_object ||= KeySet.new(keyset)
   end
 
   def date
